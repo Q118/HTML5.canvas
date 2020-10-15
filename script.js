@@ -14,11 +14,14 @@ let lastY =0;
 
 //* function called whenever mouse is moved on canvas
 function draw(e) {
-    if(!isDrawing) return; //stop the function from running when user is not moused down
+    if(!isDrawing) return; //! stop the function from running when user is not moused down
     console.log(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
 }
 
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mousedown', () => isDrawing = true);
 canvas.addEventListener('mouseup', () => isDrawing = false);
-
+canvas.addEventListener('mouseout', () => isDrawing = false);
