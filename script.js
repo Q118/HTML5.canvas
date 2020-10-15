@@ -14,18 +14,21 @@ ctx.lineWidth = 100;
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let hue = 0;
 
 //* function called whenever mouse is moved on canvas
 function draw(e) {
 	if (!isDrawing) return; //! stop the function from running when user is not moused down
-	console.log(e);
+    console.log(e);
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
 	ctx.beginPath();
 	// start from
 	ctx.moveTo(lastX, lastY);
 	// go to
 	ctx.lineTo(e.offsetX, e.offsetY);
 	ctx.stroke();
-	[lastX, lastY] = [e.offsetX, e.offsetY];
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+    hue++;
 }
 
 canvas.addEventListener("mousedown", (e) => {
