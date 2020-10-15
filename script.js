@@ -19,3 +19,6 @@ function draw(e) {
 }
 
 canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mousedown', () => isDrawing = true);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+
